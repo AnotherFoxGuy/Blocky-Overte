@@ -1,34 +1,38 @@
-
-
-class Toolbox
+class TypeScriptDeclaration
 {
     public string Name = "";
-    public string Colour = "";
-    public List<ToolboxCategory> Contents = [];
-
-    public bool Interface;
-    public bool ClientEntity;
-    public bool Avatar;
-}
-
-class ToolboxCategory
-{
-    public string Name = "";
-    public List<ToolboxBlock> Contents = [];
-}
-
-class ToolboxBlock
-{
-    public string Name = "";
-    // public string? Type;
-    public List<BlockParameter>? Inputs;
-}
-
-class BlockParameter
-{
-    public string Name = "";
-    public string Description = "";
     public string Type = "";
-    public string Shadowtype = "";
-    public object? Defaultvalue;
+    public string Description = "";
+    public List<TypeScriptVariable> Variables = [];
+    public List<TypeScriptFunction> Functions = [];
+    public List<TypeScriptDeclaration> Subclasses = [];
+    public string? Extra;
+}
+
+class TypeScriptVariable
+{
+    public string Name = "";
+    public string? Description;
+    public string Type = "";
+
+    public bool Equals(TypeScriptVariable other)
+    {
+        if (ReferenceEquals(other, null)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return Name.Equals(other.Name);
+    }
+}
+
+class TypeScriptFunction
+{
+    public string Name = "";
+    public string? Description;
+    public string Type = "";
+
+    public bool Equals(TypeScriptFunction other)
+    {
+        if (ReferenceEquals(other, null)) return false;
+        if (ReferenceEquals(this, other)) return true;
+        return Name.Equals(other.Name);
+    }
 }

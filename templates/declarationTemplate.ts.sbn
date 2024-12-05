@@ -1,0 +1,32 @@
+{{~
+func com
+    if !for.last 
+        ret ','
+    end
+end
+~}}
+
+// {{description}}
+declare namespace {{name}} {
+{{~ for v in variables ~}} 
+    // {{v.description}}
+    let {{ v.name }} : {{ v.type }}
+{{~ end~}}
+
+{{~ for f in functions ~}} 
+    // {{f.description}}
+    function {{f.name}}(): {{ f.type }}
+{{~ end ~}}
+
+{{ extra }}
+
+{{~ for s in subclasses ~}} 
+    // {{s.description}}
+    export type {{s.name}} = {
+        {{~ for v in s.variables ~}} 
+            // {{v.description}}
+            {{ v.name }} : {{ v.type }}
+        {{~ end~}}
+    }
+{{~ end ~}}
+}

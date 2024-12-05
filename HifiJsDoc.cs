@@ -22,7 +22,7 @@ public partial class HifiJsDoc
     public bool? HifiAssignmentClient { get; set; }
 
     [JsonProperty("properties", NullValueHandling = NullValueHandling.Ignore)]
-    public Param[] Properties { get; set; }
+    public Param[]? Properties { get; set; }
 
     [JsonProperty("longname")]
     public string Longname { get; set; }
@@ -37,16 +37,16 @@ public partial class HifiJsDoc
     public string[] Examples { get; set; }
 
     [JsonProperty("memberof", NullValueHandling = NullValueHandling.Ignore)]
-    public string Memberof { get; set; }
+    public string? Memberof { get; set; }
 
     [JsonProperty("returns", NullValueHandling = NullValueHandling.Ignore)]
-    public Return[] Returns { get; set; }
+    public Return[]? Returns { get; set; }
 
     [JsonProperty("tags", NullValueHandling = NullValueHandling.Ignore)]
-    public Tag[] Tags { get; set; }
+    public Tag[]? Tags { get; set; }
 
     [JsonProperty("deprecated", NullValueHandling = NullValueHandling.Ignore)]
-    public string Deprecated { get; set; }
+    public string? Deprecated { get; set; }
 
     [JsonProperty("hifiInterface", NullValueHandling = NullValueHandling.Ignore)]
     public bool? HifiInterface { get; set; }
@@ -58,7 +58,7 @@ public partial class HifiJsDoc
     public bool? HifiAvatar { get; set; }
 
     [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-    public TypeClass Type { get; set; }
+    public TypeClass? Type { get; set; }
 
     [JsonProperty("see", NullValueHandling = NullValueHandling.Ignore)]
     public string[] See { get; set; }
@@ -92,13 +92,13 @@ public partial class ExceptionElement
 public partial class Param
 {
     [JsonProperty("type")]
-    public TypeClass Type { get; set; }
+    public TypeClass? Type { get; set; }
 
     [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonProperty("optional", NullValueHandling = NullValueHandling.Ignore)]
     public bool? Optional { get; set; }
@@ -119,10 +119,10 @@ public partial class TypeClass
 public partial class Return
 {
     [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-    public TypeClass Type { get; set; }
+    public TypeClass? Type { get; set; }
 
     [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 }
 
 public partial class Tag
