@@ -14,6 +14,13 @@
       ]
     },
     {
+      "library": "@xmldom/xmldom@0.9.4",
+      "destination": "deploy/xmldom",
+      "files": [
+        "lib/*.js"
+      ]
+    },
+    {
       "library": "@blockly/plugin-workspace-search@9.1.2",
       "destination": "deploy/workspace-search",
       "files": [

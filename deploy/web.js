@@ -86,28 +86,28 @@ blocklyEditor.onScriptEventReceived = (message) => {
         case "blocklyEditor.updateProjectname":
             // document.getElementById("projectName").innerHTML = message.projectName;
             blocklyEditor.projectName = message.projectName;
-            console.log("File name updated: " + message.projectName);
+            // console.log("File name updated: " + message.projectName);
             break;
-        case "blocklyEditor.updateWorkspace":
+        // case "blocklyEditor.updateWorkspace":
 
-            console.log(`test ${editorId} ms ${message.id}`);
-            if (message.id == null || message.id == editorId || blocklyEditor.lastEdit == message.event)
-                return;
+        //     console.log(`test ${editorId} ms ${message.id}`);
+        //     if (message.id == null || message.id == editorId || blocklyEditor.lastEdit == message.event)
+        //         return;
 
-            Blockly.Events.disable();
-            let updateEvent = Blockly.Events.fromJson(message.event, blocklyEditor.workspace);
-            updateEvent.run(true);
-            blocklyEditor.updateCode(updateEvent);
-            Blockly.Events.enable();
-            console.log("Workspace updated: " + message.event);
-            blocklyEditor.lastEdit = message.event;
+        //     Blockly.Events.disable();
+        //     let updateEvent = Blockly.Events.fromJson(message.event, blocklyEditor.workspace);
+        //     updateEvent.run(true);
+        //     blocklyEditor.updateCode(updateEvent);
+        //     Blockly.Events.enable();
+        //     console.log("Workspace updated: " + message.event);
+        //     blocklyEditor.lastEdit = message.event;
 
-            break;
+        //     break;
         case "blocklyEditor.loadWorkspace":
             if (message.data == null)
                 return;
             Blockly.Events.disable();
-            console.log("Workspace loaded: " + message.data);
+            // console.log("Workspace loaded: " + message.data);
             Blockly.serialization.workspaces.load(JSON.parse(message.data), blocklyEditor.workspace);
             Blockly.Events.enable();
             break;
@@ -123,7 +123,7 @@ saveButton.addEventListener("click", () => {
         data: blocklyEditor.code,
     };
     EventBridge.emitWebEvent(JSON.stringify(saveEvent));
-    console.log("Save button pressed: " + JSON.stringify(saveEvent));
+    // console.log("Save button pressed: " + JSON.stringify(saveEvent));
 });
 
 const loadButton = document.getElementById("loadButton");
@@ -133,7 +133,7 @@ loadButton.addEventListener("click", () => {
         method: "blocklyEditor.loadButtonClick"
     };
     EventBridge.emitWebEvent(JSON.stringify(loadEvent));
-    console.log("Load button pressed: " + JSON.stringify(loadEvent));
+    // console.log("Load button pressed: " + JSON.stringify(loadEvent));
 });
 
 // const projectnameBox = document.getElementById("projectname");
@@ -153,3 +153,11 @@ blocklyEditor.workspace.addChangeListener(
     shadowBlockConversionChangeListener,
 );
 blocklyEditor.workspace.addChangeListener(blocklyEditor.onChangeHandler);
+
+// Let the script know that web entity has fully loaded
+var onLoadEvent = {
+    id: editorId,
+    app: "blocklyEditor",
+    method: "blocklyEditor.onLoadEvent"
+};
+EventBridge.emitWebEvent(JSON.stringify(onLoadEvent));

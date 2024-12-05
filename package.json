@@ -1,8 +1,15 @@
 {
   "scripts": {
-    "deploy": "gh-pages -d deploy"
+    "deploy": "gh-pages -d deploy",
+    "get-jsdoc": "wget https://apidocs.overte.org/hifiJSDoc.json -O hifiJSDoc.json",
+    "pkgo": "esbuild deploy/xmldom/lib/index.js --bundle --outfile=deploy/xmldom/xmldom.js --target=chrome58,firefox57,safari11,edge16",
+    "pkg": "webpack --mode=none",
+    "serve" : "miniserve deploy"
   },
   "devDependencies": {
-    "gh-pages": "^6.2.0"
+    "esbuild": "^0.24.0",
+    "gh-pages": "^6.2.0",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }
